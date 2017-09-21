@@ -3,28 +3,19 @@ const http = require('http');
 const requestParser = require('./request-parser.js');
 //npm dependencies
 //constants
+let cowsay = require('cowsay');
 const app = http.createServer((request, response) => {
-  // console.log('request.method', request.method); //not necessary but useful
-  // console.log('request.headers', request.headers);
-  // console.log('request.url', request.url);
 
-  //handeling route below
   requestParser(request)
     .then(request => {
       if(request.method === 'GET' && request.url.pathname === '/'){
         response.writeHead(200, {'Content-Type': 'text/html'});
-        response.write(`<!DOCTYPE html>
-      <html>
-        <header> <h1>Hello Universe</h1> </header>
-        <body> <h3>Goodnight Moon</h3> </body>
-      </html>`);
-        response.end();
-        return;
-      }
-
-      if(request.method === 'POST' && request.url.pathname === '/echo'){
-        response.writeHead(200, {'Content-Type': 'application/json'});
-        response.write(JSON.stringify(request.body));
+        response.write(cowsay.think({
+          text: 'Result of mad cow disease',//my cow does not look like a cow.
+          e: '@@',
+          T: 'U',
+          wrap: false,
+        }));
         response.end();
         return;
       }
@@ -43,7 +34,6 @@ const app = http.createServer((request, response) => {
       response.write('bad request');
       response.end();
     });
-//register routes//add in
 });
 
 module.exports = {
