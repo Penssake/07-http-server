@@ -11,7 +11,7 @@ const app = http.createServer((request, response) => {
       if(request.method === 'GET' && request.url.pathname === '/'){
         response.writeHead(200, {'Content-Type': 'JSON'});
         response.write(cowsay.think({
-          text: 'I\'m a bird',
+          text: 'I\'m a bird',//my cow does not look like a cow.
           e: '@@',
           T: 'U',
           wrap: false,
@@ -28,6 +28,7 @@ const app = http.createServer((request, response) => {
     })
     .catch(err => {
       console.log(err);
+
       response.writeHead(400, {
         'Content-Type': 'text/plain',
       });
