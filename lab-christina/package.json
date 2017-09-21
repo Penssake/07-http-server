@@ -1,15 +1,23 @@
 {
   "name": "lab-christina",
   "version": "1.0.0",
-  "description": "''\u001b[Dlab assignment - http server'",
+  "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "watch": "nodemon index.js",
     "test": "jest -i --coverage"
   },
-  "repository": {
-    "type": "git",
-    "url": "\u0016"
-  },
+  "keywords": [],
   "author": "",
-  "license": "MIT"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "jest": "^21.1.0",
+    "querystring": "^0.2.0",
+    "superagent": "^3.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
 }
