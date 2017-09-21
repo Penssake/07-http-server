@@ -9,9 +9,9 @@ const app = http.createServer((request, response) => {
   requestParser(request)
     .then(request => {
       if(request.method === 'GET' && request.url.pathname === '/'){
-        response.writeHead(200, {'Content-Type': 'text/html'});
+        response.writeHead(200, {'Content-Type': 'JSON'});
         response.write(cowsay.think({
-          text: 'Result of mad cow disease',//my cow does not look like a cow.
+          text: 'I\'m a bird',
           e: '@@',
           T: 'U',
           wrap: false,

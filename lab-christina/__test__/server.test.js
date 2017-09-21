@@ -3,7 +3,7 @@
 const superagent = require('superagent');
 const server = require('../lib/server.js');
 
-describe('GET', () => {
+describe('POST', () => {
   test('test should respond with 200');
   return superagent.post('http://localhost:4000')
     .send({
