@@ -8,7 +8,7 @@ module.exports = (request) => {
     request.url = url.parse(request.url);
     request.url.query = queryString.parse(request.url.query);
 
-    if(!(request.method === 'POST' || request.method === 'PUT')) // Why not !==
+    if(!(request.method === 'POST' || request.method === 'PUT'))
       return resolve(request);
 
     let text = '';
