@@ -11,7 +11,7 @@ const app = http.createServer((request, response) => {
       if(request.method === 'GET' && request.url.pathname === '/'){
         response.writeHead(200, {'Content-Type': 'JSON'});
         response.write(cowsay.think({
-          text: 'I\'m a bird',//my cow does not look like a cow.
+          text: 'I\'m a bird',
           e: '@@',
           T: 'U',
           wrap: false,
@@ -20,24 +20,21 @@ const app = http.createServer((request, response) => {
         return;
       }
 
-      response.writeHead(404, {
-        'Content-Type': 'text/plain',
-      });
-      response.write(`resource ${request.url.pathname} not found!`);
-      response.end();
-    })
-    .catch(err => {
-      console.log(err);
+      if(request.url.pathname !== '/'){
+        response.writeHead(404, {'Content-Type': 'text/plain'});
+        response.write(`resource ${request.url.pathname} not found!`);
+      }
 
-      response.writeHead(400, {
-        'Content-Type': 'text/plain',
-      });
-      response.write('bad request');
-      response.end();
+      if(request.url.pathname !== '/'){
+        response.writeHead(400, {'Content-Type': 'text/plain'});
+        response.write('bad request');
+        response.end();
+      }
     });
-});
 
-module.exports = {
-  start: (port, callback) => app.listen(port, callback),
-  stop: (callback) => app.close(callback),
-};
+  module.exports = {
+    start: (PORT, callback) => app.listen(PORT, callback),
+    stop: (callback) => app.close(callback),
+  };
+
+});

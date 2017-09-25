@@ -17,7 +17,7 @@ describe('POST', () => {
   });
 
   test('should respond with a 404 NOT FOUND', () => {
-    return superagent.post('http://localhost:4000/rando')
+    return superagent.post('http://localhost:4000/')
       .catch(response => {
         console.log(response);
         expect(response.status).toEqual(404);
