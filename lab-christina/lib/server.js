@@ -20,24 +20,21 @@ const app = http.createServer((request, response) => {
         return;
       }
 
-      response.writeHead(404, {
-        'Content-Type': 'text/plain',
-      });
-      response.write(`resource ${request.url.pathname} not found!`);
-      response.end();
-    })
-    .catch(err => {
-      console.log(err);
+      if(request.url.pathname !== '/'){
+        response.writeHead(404, {'Content-Type': 'text/plain'});
+        response.write(`resource ${request.url.pathname} not found!`);
+      }
 
-      response.writeHead(400, {
-        'Content-Type': 'text/plain',
-      });
-      response.write('bad request');
-      response.end();
+      if(request.url.pathname !== '/'){
+        response.writeHead(400, {'Content-Type': 'text/plain'});
+        response.write('bad request');
+        response.end();
+      }
     });
-});
 
-module.exports = {
-  start: (port, callback) => app.listen(port, callback),
-  stop: (callback) => app.close(callback),
-};
+  module.exports = {
+    start: (port, callback) => app.listen(port, callback),
+    stop: (callback) => app.close(callback),
+  };
+
+});
