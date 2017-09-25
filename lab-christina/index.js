@@ -2,8 +2,8 @@
 
 const dotenv = require('dotenv').config();
 const server = require('./lib/server.js');
-const PORT = 4000 || process.env.PORT;
+const PORT = process.env.PORT;
 
-server.start(PORT, () => {
-  console.log('server ::', PORT);
+server.start(process.env.PORT, () => {
+  console.log('server ::', process.env.PORT);
 });
