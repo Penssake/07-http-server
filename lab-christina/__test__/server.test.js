@@ -4,23 +4,16 @@ const superagent = require('superagent');
 const server = require('../lib/server.js');
 
 describe('POST', () => {
-  test('should respond with a 400', () => {
-    return superagent.post('http://localhost:4000/')
-      .set({ 'Content-Type': 'application/json'})
-      .send('{')
-      .then(Promise.reject)
-      .catch(response => {
-        expect(response.status).toEqual(400);
-        console.log(response);
-        expect(response.response.text).toEqual('bad request');
-      });
+  test('Should respond with a status code of 200', () => {
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual(response.body)
   });
 
-  test('should respond with a 404 NOT FOUND', () => {
-    return superagent.post('http://localhost:4000/')
-      .catch(response => {
-        console.log(response);
-        expect(response.status).toEqual(404);
-      });
+  test('Should respond with a status code of 400', () => {
+
+  });
+
+  test('Should respond with a status code of 404', () => {
+
   });
 });

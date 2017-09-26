@@ -1,7 +1,7 @@
 'use strict';
 
 const url = require('url');
-const queryString = require('queryString');
+const queryString = require('queryString');//lecture code
 
 module.exports = (request) => {
   return new Promise((resolve, reject) => {
@@ -19,8 +19,8 @@ module.exports = (request) => {
 
     request.on('end', () => {
       try {
-        request.body = JSON.parse(text);
-        resolve(request);
+        request.body = JSON.parse(text);//try catch is syntax thing. .catch() is a method on a promise
+        resolve(request);//parsing because express does it this way
       } catch (err) {
         reject(err);
       }
