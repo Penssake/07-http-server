@@ -3,16 +3,17 @@
 const superagent = require('superagent');
 const server = require('../lib/server.js');
 
-describe('GET', () => {
-  test('should respond with a 404', () => {
-    return superagent.post('http://localhost:4000/')
-      .set({ 'Content-Type': 'application/json'})
-      .send('{')
-      .then(Promise.reject)
-      .catch(response => {
-        expect(response.status).toEqual(404);
-        console.log(response);
-        expect(response.response.text).toEqual('bad request');
-      });
+describe('POST', () => {
+  test('Should respond with a status code of 200', () => {
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual(response.body)
+  });
+
+  test('Should respond with a status code of 400', () => {
+
+  });
+
+  test('Should respond with a status code of 404', () => {
+
   });
 });
